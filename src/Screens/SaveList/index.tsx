@@ -8,7 +8,7 @@ const View = Styled.View`
 `;
 
 const MainText = Styled.Text`
-    font-size:30px;
+    font-size:40px;
     margin-left:7%;
     margin-top:10%;
     font-Weight: 700;

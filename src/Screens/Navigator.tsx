@@ -20,6 +20,7 @@ import { TransitionPresets } from '@react-navigation/stack';
 import SaveList from '~/Screens/SaveList';
 import Map from '~/Screens/Map';
 import PasswordReset from '~/Screens/PasswordReset';
+import Trip from '~/Screens/Trip';
 
 
 const Stack = createStackNavigator();
@@ -107,8 +108,8 @@ const Bottom = () => {
                 }}
             />
             <BottomTab.Screen
-                name="Store"
-                component={None}
+                name="Trip"
+                component={Trip}
                 options={{
                     tabBarLabel: '여행',
                     tabBarIcon: ({ size, color }) => (
@@ -172,7 +173,7 @@ const Navigator = () => {
     );
 };
 export default () => {
-    const { addrInfo } = useContext(LocationContext);
+    // const { addrInfo } = useContext(LocationContext);
     // console.log('>1>>>', addrInfo);
     return <Navigator></Navigator>;
 };

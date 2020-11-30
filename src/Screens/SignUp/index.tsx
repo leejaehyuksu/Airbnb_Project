@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Styled from 'styled-components/native';
 import Icon from 'react-native-vector-icons/Ionicons';
 
@@ -60,8 +60,40 @@ const NextIcon = Styled(Icon)`
 `;
 
 const SignUp = ({ navigation }) => {
-    const [FirstNamevalue, onChangeText] = React.useState('');
-    const [LastNamevalue, unChangeText] = React.useState('');
+    const [FirstName, SetFirstName] = useState<string | undefined>(undefined);
+    const [LastName, SetLastName] = useState<string | undefined>(undefined);
+
+    const submitFC = () => {
+        const joinInfo = {
+            "FirstName": FirstName,
+            "LastName": LastName,
+        }
+
+        const json_joinInfo = JSON.stringify(joinInfo);
+        return (json_joinInfo);
+    }
+
+    //request
+    let data = {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+        },
+        body: submitFC()
+    };
+
+    function fetchJoin() {
+        let url = ' http://192.168.0.112:3333/airbnb/user/join';
+        return fetch(url, data)
+            .then((res) => {
+                return res.json();
+            })
+            .then((data) => {
+                console.log(data);
+            });
+    };
+
 
     return (
         <View>
@@ -69,18 +101,18 @@ const SignUp = ({ navigation }) => {
             <NameText>이름(예: 길동)</NameText>
             <TextInput
                 style={{}}
-                onChangeText={text => onChangeText(text)}
-                value={FirstNamevalue}
+                onChangeText={(text: string) => SetFirstName(text)}
+                value={FirstName}
                 placeholder="길동"
             />
             <NameText>성(예: 홍)</NameText>
             <TextNameInput
                 style={{}}
-                onChangeText={text => unChangeText(text)}
-                value={LastNamevalue}
+                onChangeText={text => SetLastName(text)}
+                value={LastName}
                 placeholder="홍"
             />
-            <NextIcon name="chevron-forward-circle-outline" size={70} onPress={() => navigation.navigate('InputEmail')} />
+            <NextIcon name="chevron-forward-circle-outline" size={70} onPress={() => { fetchJoin(); navigation.navigate('InputEmail') }} />
         </View>
     );
 }

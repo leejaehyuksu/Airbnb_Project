@@ -65,8 +65,6 @@ const StyledIcon = Styled(Icon)`
 //     margin-top:-5%;
 // `;
 
-
-
 const Login = ({ navigation }) => {
     const [Emailvalue, onChangeText] = React.useState('');
     const [Passwordvalue, unChangeText] = React.useState('');

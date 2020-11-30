@@ -26,7 +26,7 @@ font-weight: 700;
 `;
 const SubMessage = Styled.Text`
 margin-left:3%;
-margin-top:5%;
+margin-top:15%;
 font-size : 22px;
 font-weight: 500;
 `;

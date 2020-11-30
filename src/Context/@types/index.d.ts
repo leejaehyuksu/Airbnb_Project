@@ -1,36 +1,16 @@
 interface IUserInfo {
-    email: string | undefined;
-    nickName?: string | undefined;
-    addr?: string | undefined;
-}
-interface ILocation {
-    mainAddr: string;
+    email: string;
+    password: string;
 }
 
 interface IUserContext {
-    isLoading: boolean | undefined;
+    isLoading: boolean;
     userInfo: IUserInfo | undefined;
-    getUserInfo: () => void;
     login: (email: string, password: string) => void;
+    getUserInfo: () => void;
     logout: () => void;
-}
-interface ILocationContext {
-    isLoading: boolean | undefined;
-
-    getAddr: () => void;
-    setAddr: (addr: string) => void;
-    addrInfo: string | undefined;
+    permission: boolean | undefined;
+    checkPermission: (granted: boolean) => void
+    getPermission: () => void
 }
 
-type NavigationParamList = {
-    LocationTerm: undefined;
-    LocationInput: undefined;
-    LocationList: {
-        message: string;
-    };
-    Main: undefined;
-    LocationDetail: {
-        mainAddr: string;
-        roadAddr: string;
-    };
-};

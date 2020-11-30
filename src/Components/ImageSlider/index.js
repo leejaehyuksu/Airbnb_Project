@@ -41,7 +41,7 @@ const ImageSliders = ({ images, width, height, marginLeft, marginRight }) => {
             <View style={styles.pagination}>
                 {
                     images.map((i, k) => (
-                        <Text key={k} style={k === state ? styles.pagingActive : styles.pagingText}>●</Text>
+                        <Text key={k} style={k === state ? styles.pagingActive : styles.pagingText}>></Text>
                     ))
                 }
             </View>

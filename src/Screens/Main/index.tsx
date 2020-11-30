@@ -107,7 +107,7 @@ const Main = ({ navigation }) => {
                         images={images}
                         height={windowHeight - 500}
                         width={windowWidth - 20}
-                        marginLeft={2}
+                        marginLeft={3}
                         marginRight={0} />
                 </Container>
                 <SubText1>다음버전을 기대해주세요...</SubText1>
