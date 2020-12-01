@@ -21,6 +21,7 @@ import SaveList from '~/Screens/SaveList';
 import Map from '~/Screens/Map';
 import PasswordReset from '~/Screens/PasswordReset';
 import Trip from '~/Screens/Trip';
+import Message from '~/Screens/Message';
 
 
 const Stack = createStackNavigator();
@@ -119,8 +120,8 @@ const Bottom = () => {
             />
 
             <BottomTab.Screen
-                name="History"
-                component={None}
+                name="Message"
+                component={Message}
                 options={{
                     tabBarLabel: '메세지함',
                     tabBarIcon: ({ size, color }) => (

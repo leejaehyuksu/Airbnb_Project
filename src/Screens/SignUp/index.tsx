@@ -1,6 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Styled from 'styled-components/native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import Axios from 'axios';
+import { Alert } from 'react-native';
 
 const View = Styled.View`
     backgroundColor: #008388;
@@ -60,40 +62,20 @@ const NextIcon = Styled(Icon)`
 `;
 
 const SignUp = ({ navigation }) => {
-    const [FirstName, SetFirstName] = useState<string | undefined>(undefined);
-    const [LastName, SetLastName] = useState<string | undefined>(undefined);
+    const [FirstName, SetFirstName] = useState<string>('');
+    const [LastName, SetLastName] = useState<string>('');
 
-    const submitFC = () => {
-        const joinInfo = {
-            "FirstName": FirstName,
-            "LastName": LastName,
+    const inputCheck = () => {
+        if (FirstName.trim() === '' || FirstName === undefined) {
+            Alert.alert('이름을 입력해주세요.');
+            return false;
+        } else if (LastName.trim() === '' || LastName === undefined) {
+            Alert.alert('성를 입력해주세요.');
+            return false;
+        } else {
+            return true;
         }
-
-        const json_joinInfo = JSON.stringify(joinInfo);
-        return (json_joinInfo);
     }
-
-    //request
-    let data = {
-        method: 'POST',
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-        },
-        body: submitFC()
-    };
-
-    function fetchJoin() {
-        let url = ' http://192.168.0.112:3333/airbnb/user/join';
-        return fetch(url, data)
-            .then((res) => {
-                return res.json();
-            })
-            .then((data) => {
-                console.log(data);
-            });
-    };
-
 
     return (
         <View>
@@ -112,9 +94,45 @@ const SignUp = ({ navigation }) => {
                 value={LastName}
                 placeholder="홍"
             />
-            <NextIcon name="chevron-forward-circle-outline" size={70} onPress={() => { fetchJoin(); navigation.navigate('InputEmail') }} />
+            <NextIcon name="chevron-forward-circle-outline"
+                size={70}
+                onPress={() => {
+                    inputCheck();
+                    if (inputCheck() === true)
+                        navigation.navigate('InputEmail', { FirstName: FirstName, LastName: LastName })
+                }} />
         </View>
     );
 }
 
 export default SignUp;
+// const submitFC = () => {
+//     const joinInfo = {
+//         "FirstName": FirstName,
+//         "LastName": LastName,
+//     }
+
+//     const json_joinInfo = JSON.stringify(joinInfo);
+//     return (json_joinInfo);
+// }
+
+// //request
+// let data = {
+//     method: 'POST',
+//     headers: {
+//         'Accept': 'application/json',
+//         'Content-Type': 'application/json',
+//     },
+//     body: submitFC()
+// };
+
+// function fetchJoin() {
+//     let url = ' http://192.168.0.112:3333/airbnb/user/join';
+//     return fetch(url, data)
+//         .then((res) => {
+//             return res.json();
+//         })
+//         .then((data) => {
+//             console.log(data);
+//         });
+// };

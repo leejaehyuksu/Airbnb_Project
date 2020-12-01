@@ -96,7 +96,7 @@ const Agree = ({ navigation }: Props) => {
                     />
                 </CheckBoxTouchAble>
                 <AgreeBtn
-                    onPressed={() => navigation.navigate('Main')}
+                    onPressed={() => { Alert.alert("Airbnb에 오신걸 환영합니다! 자유롭게 이용하세요."), navigation.navigate('Main') }}
                     checked={checked}
                     title={'동의 및 계속하기'}></AgreeBtn>
                 <DisAgreeBtn

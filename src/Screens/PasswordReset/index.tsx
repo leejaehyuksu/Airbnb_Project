@@ -60,44 +60,44 @@ const GoBack = Styled.Text`
 `;
 
 const PasswordReset = ({ navigation }) => {
-    const [tabIndex, setTabIndex] = useState<number>(0);
-    const tabs = ['사용자 이름', '전화번호'];
-    const tabDescriptions = [
-        '계정과 연결된 이메일주소를 입력하시면, 비밀번호 재설정 링크를 보내드립니다.',
-        '계정과 연결된 전화번호를 입력하시면, 비밀번호 재설정 링크를 보내드립니다.',
-    ];
-    const placeholders = ['사용자 이름 또는 이메일', '전화번호'];
+  const [tabIndex, setTabIndex] = useState<number>(0);
+  const tabs = ['이메일', '전화번호'];
+  const tabDescriptions = [
+    '계정과 연결된 이메일주소를 입력하시면, 비밀번호 재설정 링크를 보내드립니다.',
+    '계정과 연결된 전화번호를 입력하시면, 비밀번호 재설정 링크를 보내드립니다.',
+  ];
+  const placeholders = ['이메일을 입력해주세요', '전화번호'];
 
-    return (
-        <Container>
-            <FormContainer>
-                <LockImageContainer>
-                    <LockImage source={require('~/Assets/Images/lock.png')} />
-                </LockImageContainer>
-                <Title>비밀번호 재설정</Title>
-                <Description>{tabDescriptions[tabIndex]}</Description>
-                <TabContainer>
-                    {tabs.map((label: string, index: number) => (
-                        <Tab
-                            key={`tab-${index}`}
-                            selected={tabIndex === index}
-                            label={label}
-                            onPress={() => setTabIndex(index)}
-                        />
-                    ))}
-                </TabContainer>
-                <Input
-                    style={{ marginBottom: 16, height: 50 }}
-                    placeholder={placeholders[tabIndex]}
-                />
-                <Button label="다음" style={{ marginBottom: 24 }} />
-                <HelpLabel>도움이 더 필요하세요?</HelpLabel>
-            </FormContainer>
-            <Footer>
-                <GoBack onPress={() => navigation.goBack()}>로그인으로 돌아가기</GoBack>
-            </Footer>
-        </Container>
-    );
+  return (
+    <Container>
+      <FormContainer>
+        <LockImageContainer>
+          <LockImage source={require('~/Assets/Images/lock.png')} />
+        </LockImageContainer>
+        <Title>비밀번호 재설정</Title>
+        <Description>{tabDescriptions[tabIndex]}</Description>
+        <TabContainer>
+          {tabs.map((label: string, index: number) => (
+            <Tab
+              key={`tab-${index}`}
+              selected={tabIndex === index}
+              label={label}
+              onPress={() => setTabIndex(index)}
+            />
+          ))}
+        </TabContainer>
+        <Input
+          style={{ marginBottom: 16, height: 50 }}
+          placeholder={placeholders[tabIndex]}
+        />
+        <Button label="다음" style={{ marginBottom: 24 }} />
+        <HelpLabel>도움이 더 필요하세요?</HelpLabel>
+      </FormContainer>
+      <Footer>
+        <GoBack onPress={() => navigation.goBack()}>로그인으로 돌아가기</GoBack>
+      </Footer>
+    </Container>
+  );
 };
 
 export default PasswordReset;

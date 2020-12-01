@@ -1,75 +1,95 @@
-import React, { useState } from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import React, { useEffect, useState } from 'react';
+import { Image } from 'react-native';
+import { Text } from 'react-native';
+import { View } from 'react-native';
+import { FlatList, TouchableOpacity } from 'react-native-gesture-handler';
 import Styled from 'styled-components/native';
-import FaceBookBtn from '~/Components/Button/FaceBookBtn'
-import TripBtn from '~/Components/Button/TripBtn';
-import Tab from '~/Components/Tab';
+
 
 const Container = Styled.SafeAreaView`
   flex: 1;
   background-color: #FEFFFF;
 `;
 
-const FormContainer = Styled.View`
-  flex: 1;
-  width: 100%;
-  align-items: center;
-  padding: 32px;
-`;
-const LockImage = Styled.Image``;
-
-const LockImageContainer = Styled.View`
-  border-color: #292929;
-  margin-bottom: 24px;
-`;
-const Description = Styled.Text`
-  font-size: 20px;
-  text-align: center;
-  margin-bottom: 20px;
-  color: #292929;
-`;
-const TabContainer = Styled.View`
-  flex-direction: row;
-  margin-right:40%;
-  margin-bottom: 10%;
-`;
-
 const MainText = Styled.Text`
     font-size:40px;
-    margin-top:5%;
-    margin-right:77%;
-    margin-bottom:10%;
+    margin-top:10%;
+    margin-left:6%;
+    margin-bottom:7%;
     font-Weight: 700;
 `;
 
 
-const Trip = ({ navigation }) => {
-  const [tabIndex, setTabIndex] = useState<number>(0);
-  const tabs = ['예정된 예약', '이전 예약'];
-  const tabDescriptions = [
-    '다시 여행을 떠나실 준비가 되면 에어비앤비가 도와드리겠습니다. ',
-    '여행 내역이 없습니다. 하지만 여행을 완료하면 여기에서 확인하실 수 있습니다.',
-  ];
+const Trip = () => {
+
+  useEffect(() => {
+    getTrip(3, '5', 1);
+  }, [])
+
+  const [Trip, setTrip] = useState([
+    {
+      "id": 1427,
+      "name": "광안리해수욕장 바로앞 “씨엘 메르”",
+      "localizedCity": "수영구",
+      "localId": 1,
+      "lat": 35.15186,
+      "lng": 129.11917,
+      "spaceType": "아파트 전체",
+      "amount": 225283,
+      "itemPirces": 180000,
+      "avgRating": "4.89",
+      "pictureUrl": "https://a0.muscache.com/im/pictures/88a51347-07c9-406a-8537-95ae3f411e24.jpg?im_w=720"
+    },
+  ]
+  )
+  const getTrip = async (page: number, size: string, localId: number) => {
+
+    try {
+      let response = await fetch(
+        `http://192.168.0.112:3333/airbnb/room/search?page=0&size=20&localId=1`
+      );
+      let json = await response.json();
+      setTrip(json.content)
+      console.log(Trip)
+      console.log('서버호출')
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   return (
     <Container>
-      <FormContainer>
-        <MainText>여행</MainText>
-        <TabContainer>
-          {tabs.map((label: string, index: number) => (
-            <Tab
-              key={`tab-${index}`}
-              selected={tabIndex === index}
-              label={label}
-              onPress={() => setTabIndex(index)}
-            />
-          ))}
-        </TabContainer>
-        <Description>{tabDescriptions[tabIndex]}</Description>
-        <LockImageContainer>
-          <LockImage source={require('~/Assets/Images/trip.png')} />
-        </LockImageContainer>
-        <TripBtn label="에어비앤비 둘러보기" style={{ marginBottom: 24 }} onPress={() => navigation.navigate('Main')} />
-      </FormContainer>
+
+      <MainText>여행</MainText>
+      <FlatList
+        style={{ flex: 1 }}
+        data={Trip}
+        renderItem={Card}
+        keyExtractor={(item, index) => index.toString()}
+        numColumns={1}
+      />
+
     </Container>
   );
 };
+const Card = ({ item, index }) => {
+  return (
+    <View style={{ height: 1000, padding: 35 }}>
+      <TouchableOpacity>
+        <Text style={{ fontSize: 30, fontWeight: '700', fontFamily: 'Georgia' }}>{item.name}</Text>
+        <Image
+          source={{ uri: item.pictureUrl }}
+          style={{ width: '100%', height: 500, resizeMode: 'cover', }}
+        />
+        <View>
+          <Text style={{ fontSize: 20, textDecorationLine: "underline", color: 'red', padding: 8 }}>★별점{item.avgRating}</Text>
+          <Text style={{ fontSize: 30, marginBottom: 10 }}>위치 : {item.localizedCity}{item.spaceType}</Text>
+          <Text style={{ fontSize: 25, textDecorationLine: "line-through" }}>원가 : {item.amount}원 </Text>
+          <Text style={{ fontSize: 25, textDecorationLine: "underline" }}>할인된 가격 : {item.itemPirces}원</Text>
+        </View>
+      </TouchableOpacity>
+    </View>
+  )
+}
 export default Trip;

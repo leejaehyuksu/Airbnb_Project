@@ -11,8 +11,6 @@ const Container = Styled.SafeAreaView`
     position: absolute;
 `;
 
-
-
 async function requestPermission() {
     try {
         if (Platform.OS === 'ios') {
@@ -27,8 +25,6 @@ async function requestPermission() {
         console.warn(e);
     }
 }
-
-
 
 const Map = (props: NaverMapViewProps) => {
     const [location, setLocation] = useState({ latitude: 37.564362, longitude: 126.977011 });

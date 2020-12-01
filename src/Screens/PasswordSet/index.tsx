@@ -1,6 +1,7 @@
-import * as React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Styled from 'styled-components/native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import { Alert } from 'react-native';
 
 const View = Styled.View`
     backgroundColor: #008388;
@@ -50,22 +51,49 @@ const TextNameInput = Styled.TextInput`
 //     margin-left:78%;
 //     margin-top:-5%;
 // `;
-const PasswordSet = ({ navigation }) => {
-    const [Passwordvalue, onChangeText] = React.useState('');
+const PasswordSet = ({ route, navigation }) => {
+    const [Password, SetPassword] = useState<string>('');
+    const { FirstName, LastName, Email } = route.params;
+
+    const ex2Input = {
+        ...route.params,
+        Password: Password
+    }
+
+    console.log("Email :", ex2Input.Email);
+
+    const inputCheck = () => {
+        if (Password.trim() === '' || Password === undefined) {
+            Alert.alert('비밀번호를 입력해주세요.');
+            return false;
+        } else {
+            return true;
+        }
+    }
 
     return (
         <View>
-            <MainText>비밀번호 설정하기</MainText>
+            <MainText
+                onPress={() =>
+                    Alert.alert(`FirstName: ${FirstName} // LastName: ${LastName} // email:${Email}`)}>
+                비밀번호 설정하기
+            </MainText>
             <RequirePasswrod>암호는8자 이상이어야 하며 특수 문자를{"\n"}1개 이상 포함해야 합니다.</RequirePasswrod>
             <NameText>비밀번호</NameText>
             {/* <TextPasswordCheck>표시하기</TextPasswordCheck> */}
             <TextNameInput
                 style={{}}
-                onChangeText={text => onChangeText(text)}
-                value={Passwordvalue}
+                onChangeText={text => SetPassword(text)}
+                value={Password}
                 secureTextEntry={true}
             />
-            <StyledIcon name="chevron-forward-circle-outline" size={70} onPress={() => navigation.navigate('InputBirth')} />
+            <StyledIcon name="chevron-forward-circle-outline"
+                size={70}
+                onPress={() => {
+                    inputCheck();
+                    if (inputCheck() === true)
+                        navigation.navigate('InputBirth', ex2Input)
+                }} />
         </View>
 
     );
