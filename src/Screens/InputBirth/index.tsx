@@ -52,59 +52,16 @@ const BrithText = Styled.Text`
 
 
 const InputBirth = ({ route, navigation }) => {
-    // const [Birth, SetBirth] = useState<string | undefined>(undefined);
+    const [Birth, setBirth] = useState<string | undefined>(undefined);
     const { FirstName, LastName, Email, Password } = route.params;
 
     const ex3Input = {
         ...route.params,
-        //     Birth: Birth
+        Birth: Birth
     }
 
-    // console.log("Password : ", ex3Input.Password);
-
-    const [Birth, setBirth] = useState<string | undefined>(undefined);
-
+    console.log("Password : ", ex3Input.Password);
     // console.log("Password : ", ex2Input.Password);
-
-    const submitFC = () => {
-        const joinInfo = {
-            "FirstName": FirstName,
-            "LastName": LastName,
-            "Email": Email,
-            "Password": Password,
-            "Birth": Birth,
-        }
-
-        const json_joinInfo = JSON.stringify(joinInfo);
-        return (json_joinInfo);
-    }
-
-    console.log(FirstName);
-    console.log(LastName);
-    console.log(Email);
-    console.log(Password);
-    console.log(Birth);
-    //request
-    let data = {
-        method: 'POST',
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-        },
-        body: submitFC()
-    };
-
-    function fetchJoin() {
-        let url = 'http://192.168.0.112:3333/airbnb/user/join';
-        return fetch(url, data)
-            .then((res) => {
-                return res.json();
-            })
-            .then((data) => {
-                console.log(data);
-            });
-    };
-
     return (
         <View>
             <MainText onPress={() => Alert.alert(`FirstName: ${FirstName} // LastName: ${LastName} // email:${Email}// password:${Password}`)}>생년월일 확인</MainText>
@@ -116,7 +73,7 @@ const InputBirth = ({ route, navigation }) => {
                 value={Birth}
                 placeholder="20201212"
             />
-            <StyledIcon name="chevron-forward-circle-outline" size={70} onPress={() => { Alert.alert("airbnb에 오신것을 환영합니다! 로그인 후 이용해 주세요."), navigation.navigate('Home'), fetchJoin(); }} />
+            <StyledIcon name="chevron-forward-circle-outline" size={70} onPress={() => { navigation.navigate('Agree', ex3Input) }} />
         </View>
     );
 }

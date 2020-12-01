@@ -44,7 +44,7 @@ text-decoration:underline ;
 interface Props {
     navigation: StackNavigationProp<NavigationParamList>;
 }
-const Agree = ({ navigation }: Props) => {
+const Agree = ({ route, navigation }) => {
     const [checked, setCheck] = useState<boolean>(false);
     const [checked2, setCheck2] = useState<boolean>(false);
     const [checkedA, setCheckA] = useState<boolean>(false);
@@ -55,10 +55,57 @@ const Agree = ({ navigation }: Props) => {
         setCheck2(temp);
         setCheckA(temp);
     };
+
+    const { FirstName, LastName, Email, Password, Birth } = route.params;
+
+    const submitFC = () => {
+        const joinInfo = {
+            "firstname": FirstName,
+            "lastname": LastName,
+            "email": Email,
+            "password": Password,
+            "birth": Birth,
+        }
+
+        const json_joinInfo = JSON.stringify(joinInfo);
+        return (json_joinInfo);
+    };
+
+    console.log(FirstName);
+    console.log(LastName);
+    console.log(Email);
+    console.log(Password);
+    console.log(Birth);
+
+    console.log(submitFC());
+    //request
+    let data = {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+        },
+        body: submitFC()
+    };
+
+    function fetchJoin() {
+        let url = 'http://192.168.0.112:3333/airbnb/user/join';
+
+        return fetch(url, data)
+            .then((res) => {
+                if (res.status === 400) return console.log("다시 시도해주세요");
+                if (res.status === 200) return res.json();
+            })
+            .then((data) => {
+                console.log('성공~! :', data);
+            }).catch(error =>
+                console.error('err! :', error)
+            );
+    };
     return (
         <>
             <Container>
-                <Maintitle>커뮤니티 차별반대 서약</Maintitle>
+                <Maintitle onPress={() => Alert.alert(`FirstName: ${FirstName} // LastName: ${LastName} // email:${Email}// password:${Password}// Birth:${Birth}`)}>커뮤니티 차별반대 서약</Maintitle>
                 <TextContainer>
                     <MainMessage>
                         에어비앤비는 누구나{'\n'}어디에서나 우리 집처럼{'\n'}편안함을 느낄 수 있는{'\n'}커뮤니티입니다.
@@ -67,7 +114,6 @@ const Agree = ({ navigation }: Props) => {
                         이를 위해 에어비앤비는 다음에 동의해 주실 것을 부탁드립니다.
                     </SubMessage>
                 </TextContainer>
-
                 <CheckBoxTouchAble onPressIn={onAllchanged} activeOpacity={1}>
                     <Checkbox value={checked && checked2} label={'전체동의'} />
                 </CheckBoxTouchAble>
@@ -96,7 +142,7 @@ const Agree = ({ navigation }: Props) => {
                     />
                 </CheckBoxTouchAble>
                 <AgreeBtn
-                    onPressed={() => { Alert.alert("Airbnb에 오신걸 환영합니다! 자유롭게 이용하세요."), navigation.navigate('Main') }}
+                    onPressed={() => { fetchJoin(); { Alert.alert("Airbnb에 오신걸 환영합니다! 자유롭게 이용하세요."), navigation.navigate('Main') } }}
                     checked={checked}
                     title={'동의 및 계속하기'}></AgreeBtn>
                 <DisAgreeBtn
