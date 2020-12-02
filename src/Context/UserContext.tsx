@@ -21,32 +21,31 @@ const UserContextProvider = ({ children }: Props) => {
             if (value) {
                 setAddress(value);
             }
-            setIsLoading(true);
+            // setIsLoading(true);
         });
     };
 
-    const [userInfo, setUserInfo] = useState<IUserInfo>({
-        email: undefined,
-        nickName: undefined,
-        addr: undefined,
-    });
+    const [userInfo, setUserInfo] = useState<IUserInfo>();
     const [isLoading, setIsLoading] = useState<boolean>(false);
-    const login = (email: string, password: string) => {
-        AsyncStorage.setItem('token', email).then(() => {
+
+    const login = (accessToken: string) => {
+        AsyncStorage.setItem('token', accessToken).then(() => {
             setUserInfo({
-                email: email,
+                accessToken: accessToken
             });
-            setIsLoading(true);
+
+            setIsLoading(false);
         });
     };
     const getUserInfo = () => {
         AsyncStorage.getItem('token').then((value) => {
             if (value) {
+                console.log("토큰 값 : ", value);
                 setUserInfo({
-                    email: '',
+                    accessToken: value
                 });
             }
-            setIsLoading(true);
+            setIsLoading(false);
         });
     };
     const logout = () => {

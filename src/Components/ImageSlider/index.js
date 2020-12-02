@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import Styled from 'styled-components/native';
-import { View, Image, ScrollView, Dimensions, Animated } from 'react-native';
+import { View, Image, ScrollView, Dimensions, Animated, TouchableOpacity } from 'react-native';
 import styles from './styles';
 
 const Text = Styled.Text`
     margin-top: 10%;
 `;
 
-const ImageSliders = ({ images, width, height, marginLeft, marginRight }) => {
+const ImageSliders = ({ images, width, height, marginLeft, marginRight, navigation }) => {
 
     const [state, setState] = useState(0);
 
@@ -21,12 +21,14 @@ const ImageSliders = ({ images, width, height, marginLeft, marginRight }) => {
 
     return (
         <View style={[styles.container, { width, height, marginLeft, marginRight }]}>
+
             <ScrollView
                 pagingEnabled
                 horizontal
                 onScroll={change}
                 showsHorizontalScrollIndicator={false}
                 style={[styles.scroll, { width, height, marginLeft, marginRight }]}>
+
                 {
                     images.map((image, index) => (
                         <Image
@@ -37,6 +39,7 @@ const ImageSliders = ({ images, width, height, marginLeft, marginRight }) => {
                             style={{ width, height, marginLeft, marginRight }} />
                     ))
                 }
+
             </ScrollView>
             <View style={styles.pagination}>
                 {

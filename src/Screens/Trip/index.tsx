@@ -27,28 +27,13 @@ const Trip = ({ }) => {
     getTrip(3, '5', 1);
   }, [])
 
-  const [Trip, setTrip] = useState([
-    {
-      "id": 1427,
-      "name": "광안리해수욕장 바로앞 “씨엘 메르”",
-      "localizedCity": "수영구",
-      "localId": 1,
-      "lat": 35.15186,
-      "lng": 129.11917,
-      "spaceType": "아파트 전체",
-      "amount": 225283,
-      "itemPirces": 180000,
-      "avgRating": "4.89",
-      "pictureUrl": "https://a0.muscache.com/im/pictures/88a51347-07c9-406a-8537-95ae3f411e24.jpg?im_w=720"
-    },
-  ]
-  )
+  const [Trip, setTrip] = useState([])
 
   const getTrip = async (page: number, size: string, localId: number) => {
 
     try {
       let response = await fetch(
-        `http://192.168.0.112:3333/airbnb/room/search?page=0&size=20&localId=1`
+        `http://192.168.0.112:3333/airbnb/room/search?page=0&size=20&localId=2`
       );
       let json = await response.json();
       setTrip(json.content)

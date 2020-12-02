@@ -3,7 +3,7 @@ import Styled from 'styled-components/native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Axios from 'axios';
 import { Alert } from 'react-native';
-
+import NextBtn from '~/Components/Button/NextBtn';
 const View = Styled.View`
     backgroundColor: #008388;
     flex: 1;
@@ -54,6 +54,11 @@ const TextNameInput = Styled.TextInput`
     padding-bottom:1px;
 `;
 
+const NextBtn1 = Styled(NextBtn)`
+    margin-left:60%;
+    margin-top:83%;
+`;
+
 const NextIcon = Styled(Icon)`
     position: absolute;
     margin-left:80%;
@@ -94,8 +99,8 @@ const SignUp = ({ navigation }) => {
                 value={LastName}
                 placeholder="홍"
             />
-            <NextIcon name="chevron-forward-circle-outline"
-                size={70}
+            <NextBtn1
+                label="다음으로 이동해주세요 "
                 onPress={() => {
                     inputCheck();
                     if (inputCheck() === true)

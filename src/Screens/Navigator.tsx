@@ -22,10 +22,31 @@ import Map from '~/Screens/Map';
 import PasswordReset from '~/Screens/PasswordReset';
 import Trip from '~/Screens/Trip';
 import Message from '~/Screens/Message';
+import BusanList from '~/Screens/BusanList';
+import JejuList from '~/Screens/JejuList';
+
 
 
 const Stack = createStackNavigator();
+const MainStack = createStackNavigator();
 const BottomTab = createBottomTabNavigator();
+const HomeStack = createBottomTabNavigator();
+
+// const MainNavi = () => {
+//     return (
+//         <MainStack.Navigator>
+//             <MainStack.Screen name='Main' component={Bottom} />
+//             <MainStack.Screen
+//                 options={{
+//                     title: ' ',
+//                     headerTintColor: 'white',
+//                     headerTransparent: true,
+//                 }}
+//                 name="BusanList" component={BusanList}
+//             />
+//         </MainStack.Navigator>
+//     );
+// };
 
 const HomeNavigator = () => {
     return (
@@ -63,7 +84,7 @@ const HomeNavigator = () => {
                 options={{
                     ...TransitionPresets.ModalPresentationIOS,
                 }} />
-            <Stack.Screen name="Map" component={Map} />
+
         </Stack.Navigator>
 
     );
@@ -94,7 +115,7 @@ const Bottom = () => {
                 options={{
                     tabBarLabel: '검색',
                     tabBarIcon: ({ color, size }) => (
-                        <Icon name="search-outline" size={28} color={color} />
+                        <Icon name="search-outline" size={30} color={color} />
                     ),
                 }}
             />
@@ -104,7 +125,7 @@ const Bottom = () => {
                 options={{
                     tabBarLabel: '저장목록',
                     tabBarIcon: ({ size, color }) => (
-                        <Icon name="heart-outline" size={28} color={color} />
+                        <Icon name="heart-outline" size={30} color={color} />
                     ),
                 }}
             />
@@ -114,7 +135,7 @@ const Bottom = () => {
                 options={{
                     tabBarLabel: '여행',
                     tabBarIcon: ({ size, color }) => (
-                        <Icon name="airplane-outline" size={28} color={color} />
+                        <Icon name="airplane-outline" size={30} color={color} />
                     ),
                 }}
             />
@@ -125,7 +146,7 @@ const Bottom = () => {
                 options={{
                     tabBarLabel: '메세지함',
                     tabBarIcon: ({ size, color }) => (
-                        <Icon name="mail-outline" size={28} color={color} />
+                        <Icon name="mail-outline" size={30} color={color} />
                     ),
                 }}
             />
@@ -135,7 +156,7 @@ const Bottom = () => {
                 options={{
                     tabBarLabel: '프로필',
                     tabBarIcon: ({ size, color }) => (
-                        <Icon name="person-circle-outline" size={28} color={color} />
+                        <Icon name="person-circle-outline" size={30} color={color} />
                     ),
                 }}
             />
@@ -143,13 +164,49 @@ const Bottom = () => {
     );
 };
 
+// const RootNavi = () => {
+//     return(
+//         <RootStack.Navigator>
+//             <RootStack.Screen>
+//         </RootStack.Navigator>
+//     );
+// };
+
+
 const Navigator = () => {
     const { addrInfo } = useContext(LocationContext);
+    const { userInfo } = useContext(UserContext);
 
+    const selectscreen = () => {
+        if (userInfo !== undefined) {
+            return (
+                <Stack.Screen
+                    name="Main"
+                    component={Bottom}
+                    options={{
+                    }}
+                />
+            );
+        } else {
+            return (
+                <Stack.Screen
+                    name="HomeNavigator"
+                    component={HomeNavigator}
+                    options={{
+                    }}
+                />
+
+
+            );
+        }
+    };
+
+    console.log('>>>>>>>>>>', userInfo);
     return (
         <NavigationContainer>
+
             <Stack.Navigator
-                initialRouteName={addrInfo ? 'Main' : 'HomeNavigator'}
+                // initialRouteName={userInfo?.accessToken ? 'Main' : 'HomeNavigator'}
                 screenOptions={{
                     title: ' ',
                     headerTintColor: 'white',
@@ -157,19 +214,29 @@ const Navigator = () => {
                     cardOverlayEnabled: true,
                     ...TransitionPresets.ModalSlideFromBottomIOS,
                 }}>
+
+                {
+                    selectscreen()
+                }
                 <Stack.Screen
-                    name="HomeNavigator"
-                    component={HomeNavigator}
                     options={{
+                        title: ' ',
+                        headerTintColor: 'white',
+                        headerTransparent: true,
                     }}
+                    name="BusanList" component={BusanList}
                 />
                 <Stack.Screen
-                    name="Main"
-                    component={Bottom}
                     options={{
+                        title: ' ',
+                        headerTintColor: 'white',
+                        headerTransparent: true,
                     }}
+                    name="JejuList" component={JejuList}
                 />
+                <Stack.Screen name="Map" component={Map} />
             </Stack.Navigator>
+
         </NavigationContainer>
     );
 };

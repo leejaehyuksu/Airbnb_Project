@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import Styled from 'styled-components/native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { Alert } from 'react-native';
+import NextBtn from '~/Components/Button/NextBtn';
 
 
 const View = Styled.View`
@@ -50,6 +51,10 @@ const BrithText = Styled.Text`
     padding-left: 6%;
 `;
 
+const NextBtn1 = Styled(NextBtn)`
+    margin-left:60%;
+    margin-top:100%;
+`;
 
 const InputBirth = ({ route, navigation }) => {
     const [Birth, setBirth] = useState<string | undefined>(undefined);
@@ -73,7 +78,10 @@ const InputBirth = ({ route, navigation }) => {
                 value={Birth}
                 placeholder="20201212"
             />
-            <StyledIcon name="chevron-forward-circle-outline" size={70} onPress={() => { navigation.navigate('Agree', ex3Input) }} />
+            <NextBtn1
+                label="다음으로 이동해주세요 "
+                onPress={() => { navigation.navigate('Agree', ex3Input) }}
+            />
         </View>
     );
 }

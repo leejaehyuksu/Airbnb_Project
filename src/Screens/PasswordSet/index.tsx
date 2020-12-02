@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import Styled from 'styled-components/native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { Alert } from 'react-native';
+import NextBtn from '~/Components/Button/NextBtn';
 
 const View = Styled.View`
     backgroundColor: #008388;
@@ -46,6 +47,12 @@ const TextNameInput = Styled.TextInput`
     color:white;
     padding-bottom:1px;
 `;
+
+const NextBtn1 = Styled(NextBtn)`
+    margin-left:60%;
+    margin-top:100%;
+`;
+
 // const TextPasswordCheck = Styled.Text`
 //     color: white;
 //     margin-left:78%;
@@ -87,8 +94,8 @@ const PasswordSet = ({ route, navigation }) => {
                 value={Password}
                 secureTextEntry={true}
             />
-            <StyledIcon name="chevron-forward-circle-outline"
-                size={70}
+            <NextBtn1
+                label="다음으로 이동해주세요 "
                 onPress={() => {
                     inputCheck();
                     if (inputCheck() === true)
