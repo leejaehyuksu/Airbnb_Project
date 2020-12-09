@@ -3,7 +3,7 @@ import Styled from 'styled-components/native';
 
 const StyledButton = Styled.TouchableOpacity`
   width: 45%;
-  height: 33px;
+  height: 30px;
   border-radius: 20px;
   justify-content: center;
   align-items: center;
@@ -15,7 +15,7 @@ const StyledButton = Styled.TouchableOpacity`
 `;
 const Label = Styled.Text`
 font-Weight: 700;
-font-size: 15.5px;
+font-size: 12px;
 color: white;
 `;
 

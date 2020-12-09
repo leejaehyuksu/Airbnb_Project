@@ -14,7 +14,7 @@ const StyledButton = Styled.TouchableOpacity`
 `;
 const Label = Styled.Text`
 font-Weight: 700;
-font-size: 21px;
+font-size: 18px;
 color: white;
 `;
 

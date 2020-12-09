@@ -21,12 +21,12 @@ padding-bottom : 20px;
 `;
 const MainMessage = Styled.Text`
 margin-left:3%;
-font-size : 30px;
+font-size : 25px;
 font-weight: 700;
 `;
 const SubMessage = Styled.Text`
 margin-left:3%;
-margin-top:15%;
+margin-top:5%;
 font-size : 22px;
 font-weight: 500;
 `;
@@ -35,7 +35,7 @@ const Maintitle = Styled.Text`
 margin-left:3%;
 margin-bottom:12%;
 text-align:center;
-font-size : 38px;
+font-size : 30px;
 font-weight: 700;
 text-decoration:underline ;
 `;
@@ -142,11 +142,11 @@ const Agree = ({ route, navigation }) => {
                     />
                 </CheckBoxTouchAble>
                 <AgreeBtn
-                    onPressed={() => { fetchJoin(); { Alert.alert("Airbnb에 오신걸 환영합니다! 자유롭게 이용하세요."), navigation.navigate('Main') } }}
+                    onPressed={() => { fetchJoin(); { Alert.alert("Airbnb에 오신걸 환영합니다! 로그인 후 이용해주세요."), navigation.navigate('Login') } }}
                     checked={checked}
                     title={'동의 및 계속하기'}></AgreeBtn>
                 <DisAgreeBtn
-                    onPressed={() => navigation.navigate('Home')}
+                    onPressed={() => Alert.alert("약관 동의 후 이용가능합니다.")}
                     checked={checked}
                     title={'거절하기'}></DisAgreeBtn>
             </Container>

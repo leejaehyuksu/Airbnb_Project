@@ -12,7 +12,7 @@ const Container = Styled.SafeAreaView`
 `;
 
 const MainText = Styled.Text`
-    font-size:40px;
+    font-size:28px;
     margin-top:10%;
     margin-left:6%;
     margin-bottom:7%;
@@ -59,15 +59,15 @@ const Trip = ({ }) => {
 };
 const Card = ({ item, index, }) => {
   return (
-    <View style={{ height: 1000, padding: 35 }}>
+    <View style={{ height: 800, padding: 35 }}>
       <Text style={{ fontSize: 30, fontWeight: '700', fontFamily: 'Georgia' }}>{item.name}</Text>
       <Image
         source={{ uri: item.pictureUrl }}
-        style={{ width: '100%', height: 550, resizeMode: 'cover', }}
+        style={{ width: '100%', height: 300, resizeMode: 'cover', }}
       />
       <View>
         <Text style={{ fontSize: 20, textDecorationLine: "underline", color: 'red', padding: 8 }}>★별점{item.avgRating}</Text>
-        <Text style={{ fontSize: 30, marginBottom: 10 }}>위치 : {item.localizedCity}{item.spaceType}</Text>
+        <Text style={{ fontSize: 25, marginBottom: 10 }}>위치 : {item.localizedCity}{item.spaceType}</Text>
         <Text style={{ fontSize: 25, textDecorationLine: "line-through" }}>원가 : {item.amount}원 </Text>
         <Text style={{ fontSize: 25, textDecorationLine: "underline", color: '' }}>혜택가 : {item.itemPirces}원</Text>
       </View>

@@ -54,7 +54,7 @@ const HomeNavigator = () => {
             <Stack.Screen name='Home' component={Home} />
             <Stack.Screen name="SignUp" component={SignUp}
                 options={{
-                    ...TransitionPresets.ModalSlideFromBottomIOS,
+                    ...TransitionPresets.SlideFromRightIOS,
                 }} />
             <Stack.Screen name='LoginOption' component={LoginOption}
                 options={{
@@ -62,19 +62,19 @@ const HomeNavigator = () => {
                 }} />
             <Stack.Screen name='Login' component={Login}
                 options={{
-                    ...TransitionPresets.ModalSlideFromBottomIOS,
+                    ...TransitionPresets.SlideFromRightIOS,
                 }} />
             <Stack.Screen name='InputEmail' component={InputEmail}
                 options={{
-                    ...TransitionPresets.ModalSlideFromBottomIOS,
+                    ...TransitionPresets.SlideFromRightIOS,
                 }} />
             <Stack.Screen name="PasswordSet" component={PasswordSet}
                 options={{
-                    ...TransitionPresets.ModalSlideFromBottomIOS,
+                    ...TransitionPresets.SlideFromRightIOS,
                 }} />
             <Stack.Screen name="InputBirth" component={InputBirth}
                 options={{
-                    ...TransitionPresets.ModalSlideFromBottomIOS,
+                    ...TransitionPresets.SlideFromRightIOS,
                 }} />
             <Stack.Screen name="PasswordReset" component={PasswordReset}
                 options={{
@@ -84,6 +84,7 @@ const HomeNavigator = () => {
                 options={{
                     ...TransitionPresets.ModalPresentationIOS,
                 }} />
+
 
         </Stack.Navigator>
 
@@ -102,7 +103,7 @@ const Bottom = () => {
                 labelStyle: { fontSize: 14, fontWeight: '700' },
                 style: {
                     paddingTop: 10,
-                    height: 70,
+                    height: 60,
                     paddingBottom: 5,
                     borderTopColor: 'lightgray',
                     borderTopWidth: 1,
@@ -115,7 +116,7 @@ const Bottom = () => {
                 options={{
                     tabBarLabel: '검색',
                     tabBarIcon: ({ color, size }) => (
-                        <Icon name="search-outline" size={30} color={color} />
+                        <Icon name="search-outline" size={25} color={color} />
                     ),
                 }}
             />
@@ -125,7 +126,7 @@ const Bottom = () => {
                 options={{
                     tabBarLabel: '저장목록',
                     tabBarIcon: ({ size, color }) => (
-                        <Icon name="heart-outline" size={30} color={color} />
+                        <Icon name="heart-outline" size={25} color={color} />
                     ),
                 }}
             />
@@ -135,18 +136,17 @@ const Bottom = () => {
                 options={{
                     tabBarLabel: '여행',
                     tabBarIcon: ({ size, color }) => (
-                        <Icon name="airplane-outline" size={30} color={color} />
+                        <Icon name="airplane-outline" size={25} color={color} />
                     ),
                 }}
             />
-
             <BottomTab.Screen
                 name="Message"
                 component={Message}
                 options={{
                     tabBarLabel: '메세지함',
                     tabBarIcon: ({ size, color }) => (
-                        <Icon name="mail-outline" size={30} color={color} />
+                        <Icon name="mail-outline" size={25} color={color} />
                     ),
                 }}
             />
@@ -156,7 +156,7 @@ const Bottom = () => {
                 options={{
                     tabBarLabel: '프로필',
                     tabBarIcon: ({ size, color }) => (
-                        <Icon name="person-circle-outline" size={30} color={color} />
+                        <Icon name="person-circle-outline" size={25} color={color} />
                     ),
                 }}
             />

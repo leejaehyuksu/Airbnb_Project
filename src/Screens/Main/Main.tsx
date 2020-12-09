@@ -29,7 +29,7 @@ const Carousel = ({ height, width, }: Props) => {
         <View>
             <FlatList
                 data={sliderList}
-                style={{ flex: 1, width: 455, marginLeft: 8, marginRight: 5, marginTop: 0, }}
+                style={{ flex: 1, width: 355, marginLeft: 8, marginRight: 5, marginTop: 0, }}
                 renderItem={({ item }) => {
                     return <ImageSlider data={item} height={height} width={width} />;
                 }}

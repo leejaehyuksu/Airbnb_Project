@@ -13,33 +13,34 @@ const FormContainer = Styled.View`
   flex: 1;
   width: 100%;
   align-items: center;
-  padding: 32px;
+  padding: 30px;
+  
 `;
 const LockImage = Styled.Image``;
 
 const LockImageContainer = Styled.View`
   border-color: #292929;
-  margin-bottom: 24px;
+  margin-bottom: 20px;
 `;
 
 const Description = Styled.Text`
   font-size: 20px;
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
   color: #292929;
 `;
 
 const TabContainer = Styled.View`
   flex-direction: row;
   margin-right:60%;
-  margin-bottom: 10%;
+  margin-bottom: 4%;
 `;
 
 const MainText = Styled.Text`
-    font-size:40px;
-    margin-top:5%;
-    margin-right:60%;
-    margin-bottom:10%;
+    font-size:30px;
+    margin-top:1%;
+    margin-right:63%;
+    margin-bottom:7%;
     font-Weight: 700;
 `;
 
@@ -51,10 +52,10 @@ const Message = ({ navigation }) => {
     '알림 내역이 없습니다.',
   ];
   return (
-    <Container>
+    <Container >
       <FormContainer>
         <MainText>메시지함</MainText>
-        <TabContainer>
+        <TabContainer style={{ marginBottom: 10, marginRight: 3, padding: 0, }}>
           {tabs.map((label: string, index: number) => (
             <Tab
               key={`tab-${index}`}
@@ -68,8 +69,8 @@ const Message = ({ navigation }) => {
         <LockImageContainer>
           <LockImage source={require('~/Assets/Images/trip.png')} />
         </LockImageContainer>
-        <TripBtn label="에어비앤비 둘러보기" style={{ marginBottom: 24 }} onPress={() => navigation.navigate('Main')} />
-      </FormContainer>
+        <TripBtn label="에어비앤비 둘러보기" style={{ marginBottom: 50 }} onPress={() => navigation.navigate('Main')} />
+      </FormContainer >
     </Container>
   );
 };

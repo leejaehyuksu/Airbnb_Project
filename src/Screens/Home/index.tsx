@@ -6,9 +6,10 @@ import FaceBookBtn from '~/Components/Button/FaceBookBtn';
 import SplashScreen from 'react-native-splash-screen';
 import LoginBtn from '~/Components/Button/LoginBtn';
 import OptionBtn from '~/Components/Button/OptionBtn';
+import MainFaceBtn from '~/Components/Button/MainFaceBtn';
 
 const Textmain = Styled.Text`
-  fontSize: 35px;
+  fontSize: 30px;
   color: white;
   fontWeight: 300;
   margin-left: 5%;
@@ -19,8 +20,8 @@ const View = Styled.View`
 `;
 
 const Image = Styled.Image`
-  width: 17%;
-  height: 10%;
+  width: 50px;
+  height: 50px;
   margin-left: 5%;
   margin-Bottom: 3%;
   margin-top: 3%;
@@ -30,21 +31,20 @@ const TextAgree = Styled.Text`
     color: white;
     margin-top: 8%;
     padding-left: 7%;
-    fontSize: 18.5px;
+    fontSize: 14px;
     text-decoration:underline;
 `;
 
 const FacebookIcon = Styled(Icon)`
     margin-left:10%;
-    color:#008388;  
-    margin-top : 70.8%;
+    color:white;  
+    margin-top : 254px;
     position: absolute;
 `;
 
-const FaceBtn = Styled(FaceBookBtn)`
+const FaceBtn = Styled(MainFaceBtn)`
     margin-top:8%;
     color:#008388;
-    background-color:white;
     margin-bottom:2%;
 `;
 
@@ -70,7 +70,7 @@ const Home = ({ navigation }) => {
                 onPress={() => {
                 }}
             />
-            <FacebookIcon name="logo-facebook" size={28} />
+            <FacebookIcon name="logo-facebook" size={21} />
             <SignUpBtn
                 style={{}}
                 label="계정 만들기"
@@ -78,7 +78,7 @@ const Home = ({ navigation }) => {
             <LoginOptionBtn
                 label="옵션 더보기"
                 onPress={() => navigation.navigate('LoginOption')} />
-            <TextAgree>
+            <TextAgree >
                 '계속하기','계정 만들기' 또는 '옵션 더 보기'를 탭하면 {"\n"}에어비앤비의 서비스 약관, 결제 서비스 약관, 개인정보 {"\n"}처리방침, 차별금지 정책에 동의하는 것입니다.
             </TextAgree>
         </View>

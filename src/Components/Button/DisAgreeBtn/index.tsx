@@ -2,20 +2,20 @@ import React, { useState } from 'react';
 import Styled from 'styled-components/native';
 
 const Container = Styled.View`
-flex:1;
-align-items:center;
+    flex:1;
+    align-items:center;
 `;
 
 const ButtonContainer = Styled.TouchableOpacity`
-margin-bottom:3%;
-background-color:white;
-border:1px black;
-position:absolute;
-justify-content :center;
-align-items : center;
-height: 60px;
-border-radius : 20px;
-width: 98%;
+    margin-top: 10%;
+    background-color:white;
+    border:1px black;
+    position:absolute;
+    justify-content :center;
+    align-items : center;
+    height: 60px;
+    border-radius : 30px;
+    width: 98%;
 `;
 
 interface Props {
@@ -23,11 +23,13 @@ interface Props {
     checked: boolean;
     onPressed?: () => void;
 }
+
 const Label = Styled.Text`
 font-size: 20px
 color : black;
 text-align:center;
 `;
+
 const DisAgreeBtn = ({ title, checked, onPressed }: Props) => {
     const [temp_value, setValue] = useState(true);
     return (

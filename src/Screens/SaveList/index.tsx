@@ -9,13 +9,13 @@ const View = Styled.View`
 `;
 
 const MainText = Styled.Text`
-    font-size:40px;
+    font-size:30px;
     margin-left:7%;
     margin-top:10%;
     font-Weight: 700;
 `;
 const SubText = Styled.Text`
-    font-size:20px;
+    font-size:15px;
     margin-left:7%;
     margin-top:10%;
     font-Weight: 700;

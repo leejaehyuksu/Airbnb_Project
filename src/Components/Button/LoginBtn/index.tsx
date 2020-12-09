@@ -13,9 +13,11 @@ const StyledButton = Styled.TouchableOpacity`
   border-color: white;
   background-color:#008388;
 `;
+
 const Label = Styled.Text`
-font-Weight: 700;
-font-size: 20px;
+text-align:center;
+font-Weight: 500;
+font-size: 18px;
 color: white;
 `;
 

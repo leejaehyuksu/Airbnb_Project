@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import Styled from 'styled-components/native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { Alert } from 'react-native';
-import NextBtn from '~/Components/Button/NextBtn';
+import SignNextBtn from '~/Components/Button/SignNextBtn';
 
 const View = Styled.View`
     backgroundColor: #008388;
@@ -13,7 +13,7 @@ const MainText = Styled.Text`
     color: white;
     margin-left: 5%;
     margin-top: 15%;
-    fontSize: 40px;
+    fontSize: 30px;
     font-Weight: 700;
 `;
 const NameText = Styled.Text`
@@ -37,7 +37,7 @@ const StyledIcon = Styled(Icon)`
 const TextNameInput = Styled.TextInput`
     width:85%;
     border-color:white;
-    height: 45px;
+    height: 50px;
     border-left-width: 0px;
     border-right-width: 0px;
     border-top-width: 0px;
@@ -48,8 +48,8 @@ const TextNameInput = Styled.TextInput`
     padding-bottom:1px;
 `;
 
-const NextBtn1 = Styled(NextBtn)`
-    margin-left:60%;
+const SignNextBtn1 = Styled(SignNextBtn)`
+    margin-left:53%;
     margin-top:100%;
 `;
 
@@ -93,8 +93,9 @@ const PasswordSet = ({ route, navigation }) => {
                 onChangeText={text => SetPassword(text)}
                 value={Password}
                 secureTextEntry={true}
+                placeholder="특수문자 하나이상 포함해주세요"
             />
-            <NextBtn1
+            <SignNextBtn1
                 label="다음으로 이동해주세요 "
                 onPress={() => {
                     inputCheck();

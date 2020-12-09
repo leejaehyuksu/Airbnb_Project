@@ -2,16 +2,15 @@ import React from 'react';
 import Styled from 'styled-components/native';
 
 const StyledButton = Styled.TouchableOpacity`
-  width: 80%;
-  height: 45px;
-  border-radius: 100px;
-  justify-content: center;
-  align-items: center;
-  border: 2px;
-  border-color: white;
-  background-color:#008388;
+    width: 50%;
+    height: 40px;
+    border-radius: 10px;
+    justify-content: center;
+    align-items: center;
+    border-color: white;
 `;
 const Label = Styled.Text`
+    margin-left:3%;
     font-Weight: 700;
     font-size: 20px;
     color: white;
@@ -23,7 +22,7 @@ interface Props {
     onPress?: () => void;
 }
 
-const NextBtn = ({ label, style, onPress }: Props) => {
+const AllSelectBtn = ({ label, style, onPress }: Props) => {
     return (
         <StyledButton style={style} onPress={onPress}>
             <Label> {label}</Label>
@@ -31,4 +30,4 @@ const NextBtn = ({ label, style, onPress }: Props) => {
     );
 };
 
-export default NextBtn;
+export default AllSelectBtn;

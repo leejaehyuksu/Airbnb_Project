@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import Styled from 'styled-components/native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { Alert } from 'react-native';
-import NextBtn from '~/Components/Button/NextBtn';
+import SignNextBtn from '~/Components/Button/SignNextBtn';
 
 
 const View = Styled.View`
@@ -14,7 +14,7 @@ const MainText = Styled.Text`
     color: white;
     margin-left: 5%;
     margin-top: 15%;
-    fontSize: 40px;
+    fontSize: 30px;
     font-Weight: 700;
 `;
 
@@ -27,7 +27,7 @@ const TextInput = Styled.TextInput`
     border-top-width: 0px;
     border-bottom-width: 1px;
     margin-left:5%;
-    font-size:20px;
+    font-size:25px;
     color:white;
     padding-bottom:1px;
 `;
@@ -41,7 +41,7 @@ const TextAgree = Styled.Text`
     color: white;
     margin-top: 7%;
     padding-left: 6%;
-    fontSize: 20px;
+    fontSize: 18px;
 `;
 
 const BrithText = Styled.Text`
@@ -51,8 +51,8 @@ const BrithText = Styled.Text`
     padding-left: 6%;
 `;
 
-const NextBtn1 = Styled(NextBtn)`
-    margin-left:60%;
+const SignNextBtn1 = Styled(SignNextBtn)`
+    margin-left:52%;
     margin-top:100%;
 `;
 
@@ -78,7 +78,7 @@ const InputBirth = ({ route, navigation }) => {
                 value={Birth}
                 placeholder="20201212"
             />
-            <NextBtn1
+            <SignNextBtn1
                 label="다음으로 이동해주세요 "
                 onPress={() => { navigation.navigate('Agree', ex3Input) }}
             />

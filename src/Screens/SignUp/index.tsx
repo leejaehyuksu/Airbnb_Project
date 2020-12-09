@@ -4,6 +4,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import Axios from 'axios';
 import { Alert } from 'react-native';
 import NextBtn from '~/Components/Button/NextBtn';
+import SignUpNextBtn from '~/Components/Button/SignNextBtn';
 const View = Styled.View`
     backgroundColor: #008388;
     flex: 1;
@@ -13,7 +14,7 @@ const MainText = Styled.Text`
     color: white;
     margin-left: 5%;
     margin-top: 15%;
-    fontSize: 40px;
+    fontSize: 30px;
     font-Weight: 700;
 `;
 
@@ -34,7 +35,7 @@ const TextInput = Styled.TextInput`
     border-top-width: 0px;
     border-bottom-width: 1px;
     margin-left:5%;
-    font-size:20px;
+    font-size:25px;
     color:white;
     padding-bottom:1px;
 `;
@@ -49,13 +50,13 @@ const TextNameInput = Styled.TextInput`
     border-top-width: 0px;
     border-bottom-width: 1px;
     margin-left:5%;
-    font-size:20px;
+    font-size:25px;
     color:white;
     padding-bottom:1px;
 `;
 
-const NextBtn1 = Styled(NextBtn)`
-    margin-left:60%;
+const SignUpNextBtn1 = Styled(SignUpNextBtn)`
+    margin-left:52%;
     margin-top:83%;
 `;
 
@@ -99,7 +100,7 @@ const SignUp = ({ navigation }) => {
                 value={LastName}
                 placeholder="홍"
             />
-            <NextBtn1
+            <SignUpNextBtn1
                 label="다음으로 이동해주세요 "
                 onPress={() => {
                     inputCheck();

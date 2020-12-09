@@ -20,7 +20,7 @@ const None = ({ navigation }) => {
                     data={data}
                     keyExtractor={({ id }, index) => id}
                     renderItem={({ item }) => (
-                        <Text>{item.title}, {item.releaseYear}</Text>
+                        <Text></Text>
                     )}
                 />
             )}

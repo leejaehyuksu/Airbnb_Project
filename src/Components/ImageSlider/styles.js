@@ -13,12 +13,12 @@ const styles = StyleSheet.create({
         alignSelf: 'center'
     },
     pagingText: {
-        fontSize: (width / 20),
+        fontSize: (width / 25),
         color: '#888',
         margin: 3
     },
     pagingActive: {
-        fontSize: (width / 20),
+        fontSize: (width / 25),
         color: '#FF5A60',
         margin: 3
     },

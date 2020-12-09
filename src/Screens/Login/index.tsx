@@ -16,7 +16,7 @@ const MainText = Styled.Text`
     color: white;
     margin-left: 5%;
     margin-top: 10%;
-    fontSize: 40px;
+    fontSize: 33px;
     font-Weight: 700;
 `;
 
@@ -37,7 +37,7 @@ const TextInput = Styled.TextInput`
     border-top-width: 0px;
     border-bottom-width: 1px;
     margin-left:5%;
-    font-size:23px;
+    font-size:25px;
     color:white;
     padding-bottom:1px;
 `;
@@ -52,18 +52,17 @@ const TextNameInput = Styled.TextInput`
     border-top-width: 0px;
     border-bottom-width: 1px;
     margin-left:5%;
-    font-size:20px;
+    font-size:25px;
     color:white;
     padding-bottom:1px;
 `;
 
 const NextBtn1 = Styled(NextBtn)`
-margin-left:60%;
+    margin-left:12%;
     margin-top:75%;
 `;
 
 const StyledIcon = Styled(Icon)`
-    margin-left:80%;
     margin-top:75%;
 `;
 
@@ -138,7 +137,7 @@ const Login = ({ navigation }) => {
             <ForgetPasswordBtn
                 style={{}}
                 label="비밀번호가 생각나지 않으세요?"
-                onPress={() => navigation.navigate('Main')} />
+                onPress={() => navigation.navigate('PasswordReset')} />
             <MainText>로그인</MainText>
             <NameText>이메일 주소</NameText>
             <TextInput
